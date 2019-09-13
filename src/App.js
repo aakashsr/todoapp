@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import todosData from "./todosData";
-import Form from "./Form";
+// import Form from "./Form";
 
 class App extends React.Component {
   constructor(props) {
@@ -30,6 +30,15 @@ class App extends React.Component {
     this.setState(prevState => {
       return {
         todoList: prevState.todoList.filter(p => p.id !== id)
+      };
+    });
+  };
+
+  handleAdd = e => {
+    e.preventDefault();
+    this.setState(prevState => {
+      return {
+        todoList: prevState.items.concat(e.target.value)
       };
     });
   };
@@ -68,9 +77,10 @@ class App extends React.Component {
             item={item}
             handleChange={() => this.handleChange(item.id)}
             handleRemove={() => this.handleRemove(item.id)}
+            handleSubmit={e => this.handleAdd(e)}
           />
         ))}
-        <Form />
+        {/* <Form /> */}
       </div>
     );
   }
