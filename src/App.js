@@ -25,6 +25,20 @@ class App extends React.Component {
     });
   };
 
+  // handleChange(id) {                    // This method is not correct as it is mutating the state
+  //   this.setState(prevState => {
+  //     const updatedTodos = prevState.todos.map(item => {
+  //       if (id === item.id) {
+  //         item.completed = !item.completed;
+  //       }
+  //       return item;
+  //     });
+  //     return {
+  //       todos: updatedTodos
+  //     };
+  //   });
+  // }
+
   // handleChange = id => {                 // This method is not correct as it is mutating the state
   //   this.setState(prevState => {
   //     const updatedTodos = prevState.todoList.map(todo => {
@@ -32,10 +46,10 @@ class App extends React.Component {
   //         todo.completed = !todo.completed;
   //       }
   //     });
-  //     return updatedTodos;
+  //     return updatedTodos;             // Now , we've "this.state.updatedTodos" instead of "this.state.todos" in your state. I returned the object {todos: updatedTodos} because my state property is todos.
   //   });
   // };
-  
+
   render() {
     return (
       <div className="todo-list">
