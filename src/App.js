@@ -1,6 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import todosData from "./todosData";
+import Form from "./Form";
 
 class App extends React.Component {
   constructor(props) {
@@ -22,6 +23,14 @@ class App extends React.Component {
         return item;
       });
       return { todoList: updatedTodos };
+    });
+  };
+
+  handleRemove = id => {
+    this.setState(prevState => {
+      return {
+        todoList: prevState.todoList.filter(p => p.id !== id)
+      };
     });
   };
 
@@ -58,8 +67,10 @@ class App extends React.Component {
             key={item.id}
             item={item}
             handleChange={() => this.handleChange(item.id)}
+            handleRemove={() => this.handleRemove(item.id)}
           />
         ))}
+        <Form />
       </div>
     );
   }
