@@ -12,7 +12,7 @@ class App extends React.Component {
 
   handleChange = id => {
     this.setState(prevState => {
-      const updatedTodos = this.state.todoList.map(item => {
+      const updatedTodos = prevState.todoList.map(item => {
         if (item.id === id) {
           return {
             ...item,
@@ -25,6 +25,17 @@ class App extends React.Component {
     });
   };
 
+  // handleChange = id => {                 // This method is not correct as it is mutating the state
+  //   this.setState(prevState => {
+  //     const updatedTodos = prevState.todoList.map(todo => {
+  //       if (todo.id === id) {
+  //         todo.completed = !todo.completed;
+  //       }
+  //     });
+  //     return updatedTodos;
+  //   });
+  // };
+  
   render() {
     return (
       <div className="todo-list">
