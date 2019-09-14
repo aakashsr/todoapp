@@ -1,6 +1,6 @@
 import React from "react";
 
-function TodoItem({ item, handleChange, handleRemove }) {
+function TodoItem({ item, handleCheckbox, handleRemove }) {
   const styles = {
     color: "#cdcdcd",
     textDecoration: "line-through",
@@ -8,7 +8,7 @@ function TodoItem({ item, handleChange, handleRemove }) {
   };
   return (
     <div className="todo-item">
-      <input type="checkbox" checked={item.completed} onChange={handleChange} />
+      <input type="checkbox" checked={item.completed} onChange={handleCheckbox} />
       <p style={item.completed ? styles : null}>{item.text}</p>
       <button className='btn' onClick={handleRemove}>
         Remove

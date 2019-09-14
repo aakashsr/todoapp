@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import todosData from "./todosData";
-// import Form from "./Form";
+import Form from "./Form";
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +11,9 @@ class App extends React.Component {
     };
   }
 
-  handleChange = id => {
+  prevPlayerId = 5;
+
+  handleCheckbox = id => {
     this.setState(prevState => {
       const updatedTodos = prevState.todoList.map(item => {
         if (item.id === id) {
@@ -34,11 +36,15 @@ class App extends React.Component {
     });
   };
 
-  handleAdd = e => {
-    e.preventDefault();
+  handleAddTodos = todo => {
+    // const val = this.state.todo;
     this.setState(prevState => {
       return {
-        todoList: prevState.items.concat(e.target.value)
+        todoList: prevState.todoList.concat({
+          id: this.prevPlayerId + 1,
+          text: todo,
+          completed: false
+        })
       };
     });
   };
@@ -75,12 +81,14 @@ class App extends React.Component {
           <TodoItem
             key={item.id}
             item={item}
-            handleChange={() => this.handleChange(item.id)}
+            handleCheckbox={() => this.handleCheckbox(item.id)}
             handleRemove={() => this.handleRemove(item.id)}
-            handleSubmit={e => this.handleAdd(e)}
+            // handleSubmit={e => this.handleAdd(e)}
           />
         ))}
-        {/* <Form /> */}
+        <Form
+          handleAddTodos={this.handleAddTodos}
+        />
       </div>
     );
   }
