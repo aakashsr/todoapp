@@ -37,22 +37,21 @@ class App extends React.Component {
   };
 
   handleAddTodos = todo => {
-    // const val = this.state.todo;
     this.prevPlayerId += 1;
     this.setState(prevState => {
       return {
         todoList: [
+          ...prevState.todoList,
           {
             text: todo,
             completed: false,
             id: this.prevPlayerId
-          },
-          ...prevState.todoList
+          }
         ]
       };
 
       // return {
-      //   todoList: prevState.todoList.concat({
+      //   todoList: prevState.todoList.concat({        // Alternative method
       //     id: this.prevPlayerId + 1,
       //     text: todo,
       //     completed: false
@@ -75,7 +74,7 @@ class App extends React.Component {
   //   });
   // }
 
-  // handleChange = id => {                 // This method is not correct as it is mutating the state
+  // handleChange = id => {                 // This method is also not correct as it is mutating the state
   //   this.setState(prevState => {
   //     const updatedTodos = prevState.todoList.map(todo => {
   //       if (todo.id === id) {
@@ -95,7 +94,6 @@ class App extends React.Component {
             item={item}
             handleCheckbox={() => this.handleCheckbox(item.id)}
             handleRemove={() => this.handleRemove(item.id)}
-            // handleSubmit={e => this.handleAdd(e)}
           />
         ))}
         <Form handleAddTodos={this.handleAddTodos} />
