@@ -31,9 +31,8 @@ export default class Form extends Component {
           placeholder="Add todo "
           onChange={this.handleValueChange}
         />
-        <input type="submit" value="add" />
+        <input className="btn-blue" type="submit" value="add" />
       </form>
     );
   }
-  k;
 }

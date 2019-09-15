@@ -10,7 +10,7 @@ function TodoItem({ item, handleCheckbox, handleRemove }) {
     <div className="todo-item">
       <input type="checkbox" checked={item.completed} onChange={handleCheckbox} />
       <p style={item.completed ? styles : null}>{item.text}</p>
-      <button className='btn' onClick={handleRemove}>
+      <button className='btn btn-blue' onClick={handleRemove}>
         Remove
       </button>
     </div>
