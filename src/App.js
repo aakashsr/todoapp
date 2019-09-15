@@ -28,9 +28,22 @@ class App extends React.Component {
       };
     });
   };
-  
 
-  
+  handleEdit = id => {
+    this.setState(prevState => {
+      return {
+        todoList: prevState.todoList.map(item => {
+          if (item.id === id) {
+            return {
+              ...item,
+              isEditing: !item.isEditing
+            };
+          }
+          return item;
+        })
+      };
+    });
+  };
 
   handleRemove = id => {
     this.setState(prevState => {
@@ -98,6 +111,7 @@ class App extends React.Component {
             item={item}
             handleCheckbox={() => this.handleCheckbox(item.id)}
             handleRemove={() => this.handleRemove(item.id)}
+            handleEdit={() => this.handleEdit(item.id)}
           />
         ))}
         <Form handleAddTodos={this.handleAddTodos} />
