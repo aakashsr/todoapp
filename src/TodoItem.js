@@ -8,9 +8,16 @@ function TodoItem({ item, handleCheckbox, handleRemove }) {
   };
   return (
     <div className="todo-item">
-      <input type="checkbox" checked={item.completed} onChange={handleCheckbox} />
+      <input
+        type="checkbox"
+        checked={item.completed}
+        onChange={handleCheckbox}
+      />
       <p style={item.completed ? styles : null}>{item.text}</p>
-      <button className='btn btn-blue' onClick={handleRemove}>
+      <button className="btn btn-blue" onClick={handleRemove}>
+        Edit
+      </button>
+      <button className="btn btn-blue" onClick={handleRemove}>
         Remove
       </button>
     </div>
