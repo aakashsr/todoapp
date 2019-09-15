@@ -29,6 +29,8 @@ class App extends React.Component {
     });
   };
 
+  
+
   handleRemove = id => {
     this.setState(prevState => {
       return {
