@@ -38,14 +38,26 @@ class App extends React.Component {
 
   handleAddTodos = todo => {
     // const val = this.state.todo;
+    this.prevPlayerId += 1;
     this.setState(prevState => {
       return {
-        todoList: prevState.todoList.concat({
-          id: this.prevPlayerId + 1,
-          text: todo,
-          completed: false
-        })
+        todoList: [
+          {
+            text: todo,
+            completed: false,
+            id: this.prevPlayerId
+          },
+          ...prevState.todoList
+        ]
       };
+
+      // return {
+      //   todoList: prevState.todoList.concat({
+      //     id: this.prevPlayerId + 1,
+      //     text: todo,
+      //     completed: false
+      //   })
+      // };
     });
   };
 
@@ -86,9 +98,7 @@ class App extends React.Component {
             // handleSubmit={e => this.handleAdd(e)}
           />
         ))}
-        <Form
-          handleAddTodos={this.handleAddTodos}
-        />
+        <Form handleAddTodos={this.handleAddTodos} />
       </div>
     );
   }
