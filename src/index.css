@@ -44,7 +44,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 30px 20px 0;
-  width: 70%;
+  width: 85%;
   border-bottom: 1px solid #cecece;
   font-family: Roboto, sans-serif;
   font-weight: 100;
@@ -52,9 +52,14 @@ body {
   color: #333333;
 }
 
+.todo-item p {
+  flex-basis: 60%;
+}
+
 input[type=checkbox] {
   margin-right: 10px;
   font-size: 30px;
+  flex-basis: 5%
 }
 
 input[type=checkbox]:focus {
@@ -62,7 +67,7 @@ input[type=checkbox]:focus {
 }
 
 .btn {
-  margin-left: 145px;
+  /* margin-left: 145px; */
   border-radius: 5px;
   display: inline-block;
   font-weight: 400;
@@ -71,14 +76,15 @@ input[type=checkbox]:focus {
   background-image: none;
   -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, .015);
   height: 32px;
-  padding: 0 15px;
+  padding: 8px 8px;
   border-radius: 4px;
   color: rgba(0, 0, 0, .65);
   background-color: #fff;
   border: 1px solid #7f8ff4;
   box-shadow: 0 2px 0 rgba(0, 0, 0, .015);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 11px;
+  flex-basis: 15%;
 }
 
 form {
@@ -129,7 +135,7 @@ input[type=submit] {
   text-shadow: none;
   cursor: pointer;
   margin-left: -96px;
-  text-transform:uppercase;
+  text-transform: uppercase;
 }
 
 button,
