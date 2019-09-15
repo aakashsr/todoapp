@@ -24,14 +24,14 @@ export default class Form extends Component {
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input
           value={this.state.value}
           type="text"
           placeholder="Add todo "
           onChange={this.handleValueChange}
         />
-        <button onClick={this.handleSubmit}>Add</button>
+        <input type="submit" value="add" />
       </form>
     );
   }
