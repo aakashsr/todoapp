@@ -112,7 +112,7 @@ class App extends React.Component {
             handleCheckbox={() => this.handleCheckbox(item.id)}
             handleRemove={() => this.handleRemove(item.id)}
             handleEdit={() => this.handleEdit(item.id)}
-            isEditing={this.state.todoList.isEditing}
+            isEditing={item.isEditing}
           />
         ))}
         <Form handleAddTodos={this.handleAddTodos} />

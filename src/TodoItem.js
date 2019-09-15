@@ -1,8 +1,13 @@
 import React from "react";
-import TodoText from './TodoText';
+import TodoText from "./TodoText";
 
-function TodoItem({ item, handleCheckbox, handleRemove, handleEdit , isEditing}) {
-
+function TodoItem({
+  item,
+  handleCheckbox,
+  handleRemove,
+  handleEdit,
+  isEditing
+}) {
   return (
     <div className="todo-item">
       <input
@@ -10,7 +15,7 @@ function TodoItem({ item, handleCheckbox, handleRemove, handleEdit , isEditing})
         checked={item.completed}
         onChange={handleCheckbox}
       />
-      <TodoText isEditing={isEditing} item={item} />
+      <TodoText isEditing={isEditing} item={item}>{item.text}</TodoText>
       <button className="btn btn-blue" onClick={handleEdit}>
         Edit
       </button>
