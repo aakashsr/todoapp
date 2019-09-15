@@ -6,7 +6,8 @@ function TodoItem({
   handleCheckbox,
   handleRemove,
   handleEdit,
-  isEditing
+  isEditing,
+  setTodo
 }) {
   return (
     <div className="todo-item">
@@ -15,9 +16,15 @@ function TodoItem({
         checked={item.completed}
         onChange={handleCheckbox}
       />
-      <TodoText isEditing={isEditing} item={item}>{item.text}</TodoText>
+      <TodoText
+        handleTodoEdits={e => setTodo(e.target.value)}
+        isEditing={isEditing}
+        item={item}
+      >
+        {item.text}
+      </TodoText>
       <button className="btn btn-blue" onClick={handleEdit}>
-        Edit
+        {isEditing?"Save":"Edit"}
       </button>
       <button className="btn btn-blue" onClick={handleRemove}>
         Remove

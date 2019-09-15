@@ -45,6 +45,22 @@ class App extends React.Component {
     });
   };
 
+  setNameAt = (text, id) => {
+    this.setState(prevState => {
+      return {
+        todoList: prevState.todoList.map(item => {
+          if (item.id === id) {
+            return {
+              ...item,
+              text
+            };
+          }
+          return item;
+        })
+      };
+    });
+  };
+
   handleRemove = id => {
     this.setState(prevState => {
       return {
@@ -113,6 +129,7 @@ class App extends React.Component {
             handleRemove={() => this.handleRemove(item.id)}
             handleEdit={() => this.handleEdit(item.id)}
             isEditing={item.isEditing}
+            setTodo={text => this.setNameAt(text, item.id)}
           />
         ))}
         <Form handleAddTodos={this.handleAddTodos} />

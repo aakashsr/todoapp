@@ -1,6 +1,6 @@
 import React from "react";
 
-const todoText = props => {
+const TodoText = props => {
   const styles = {
     color: "#cdcdcd",
     textDecoration: "line-through",
@@ -8,9 +8,15 @@ const todoText = props => {
   };
 
   if (props.isEditing) {
-    return <input type="text" value={props.item.text} />;
+    return (
+      <input
+        onChange={props.handleTodoEdits}
+        type="text"
+        value={props.item.text}
+      />
+    );
   }
   return <p style={props.item.completed ? styles : null}>{props.item.text}</p>;
 };
 
-export default todoText;
+export default TodoText;
