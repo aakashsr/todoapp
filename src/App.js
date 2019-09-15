@@ -15,16 +15,17 @@ class App extends React.Component {
 
   handleCheckbox = id => {
     this.setState(prevState => {
-      const updatedTodos = prevState.todoList.map(item => {
-        if (item.id === id) {
-          return {
-            ...item,
-            completed: !item.completed
-          };
-        }
-        return item;
-      });
-      return { todoList: updatedTodos };
+      return {
+        todoList: prevState.todoList.map(item => {
+          if (item.id === id) {
+            return {
+              ...item,
+              completed: !item.completed
+            };
+          }
+          return item;
+        })
+      };
     });
   };
 
