@@ -1,11 +1,8 @@
 import React from "react";
+import TodoText from './TodoText';
 
-function TodoItem({ item, handleCheckbox, handleRemove, handleEdit }) {
-  const styles = {
-    color: "#cdcdcd",
-    textDecoration: "line-through",
-    fontStyle: "italic"
-  };
+function TodoItem({ item, handleCheckbox, handleRemove, handleEdit , isEditing}) {
+
   return (
     <div className="todo-item">
       <input
@@ -13,7 +10,7 @@ function TodoItem({ item, handleCheckbox, handleRemove, handleEdit }) {
         checked={item.completed}
         onChange={handleCheckbox}
       />
-      <p style={item.completed ? styles : null}>{item.text}</p>
+      <TodoText isEditing={isEditing} item={item} />
       <button className="btn btn-blue" onClick={handleEdit}>
         Edit
       </button>
