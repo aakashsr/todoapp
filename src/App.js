@@ -132,7 +132,8 @@ class App extends React.Component {
     return (
       <div className="todo-list">
         <Header toggleFilter={this.toggleFilter} />
-        {this.state.todoList.map(item => (
+        {this.state.todoList.filter( (todo) =>  !this.state.isFiltered || todo.completed )
+        .map(item => (
           <TodoItem
             key={item.id}
             item={item}
