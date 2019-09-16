@@ -2,12 +2,13 @@ import React from "react";
 import TodoItem from "./TodoItem";
 import todosData from "./todosData";
 import Form from "./Form";
+import Header from "./Header";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFiltered:false,
+      isFiltered: false,
       todoList: todosData
     };
   }
@@ -122,6 +123,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="todo-list">
+        <Header />
         {this.state.todoList.map(item => (
           <TodoItem
             key={item.id}
