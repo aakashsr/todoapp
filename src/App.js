@@ -3,17 +3,33 @@ import TodoItem from "./TodoItem";
 import todosData from "./todosData";
 import Form from "./Form";
 import Header from "./Header";
+import PendingTodo from "./PendingTodo";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      value: "",
       isFiltered: false,
       todoList: todosData
     };
   }
 
   prevPlayerId = 5;
+
+  handleValueChange = event => {
+    this.setState({
+      value: event.target.value
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.handleAddTodos(this.state.value);
+    this.setState({
+      value: ""
+    });
+  };
 
   handleCheckbox = id => {
     this.setState(prevState => {
@@ -132,19 +148,26 @@ class App extends React.Component {
     return (
       <div className="todo-list">
         <Header toggleFilter={this.toggleFilter} />
-        {this.state.todoList.filter( (todo) =>  !this.state.isFiltered || todo.completed )
-        .map(item => (
-          <TodoItem
-            key={item.id}
-            item={item}
-            handleCheckbox={() => this.handleCheckbox(item.id)}
-            handleRemove={() => this.handleRemove(item.id)}
-            handleEdit={() => this.handleEdit(item.id)}
-            isEditing={item.isEditing}
-            setTodo={text => this.setNameAt(text, item.id)}
-          />
-        ))}
-        <Form handleAddTodos={this.handleAddTodos} />
+        {this.state.todoList
+          .filter(todo => !this.state.isFiltered || !todo.completed)
+          .map(item => (
+            <TodoItem
+              key={item.id}
+              item={item}
+              handleCheckbox={() => this.handleCheckbox(item.id)}
+              handleRemove={() => this.handleRemove(item.id)}
+              handleEdit={() => this.handleEdit(item.id)}
+              isEditing={item.isEditing}
+              setTodo={text => this.setNameAt(text, item.id)}
+            />
+          ))}
+        <PendingTodo name={this.state.value} />
+        <Form
+          handleAddTodos={this.handleAddTodos}
+          handleValueChange={this.handleValueChange}
+          handleSubmit={this.handleSubmit}
+          value={this.state.value}
+        />
       </div>
     );
   }
