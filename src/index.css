@@ -16,6 +16,21 @@ body {
   background-color: whitesmoke;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.header label{
+  font-size: .85em;
+}
+
+.header h3{
+  font-size: 1.5em;
+}
+
 .todo-list {
   background-color: white;
   margin: auto;

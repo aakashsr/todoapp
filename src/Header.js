@@ -1,11 +1,16 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ toggleFilter }) => {
   return (
     <div className="header">
       <h3>My Todo</h3>
       <label>
-        <input type="checkbox" name="checkbox" value="" />
+        <input
+          onChange={toggleFilter}
+          type="checkbox"
+          name="checkbox"
+          value=""
+        />
         Hide those which has been completed.
       </label>
     </div>

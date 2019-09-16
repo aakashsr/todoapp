@@ -95,6 +95,14 @@ class App extends React.Component {
     });
   };
 
+  toggleFilter = () => {
+    this.setState(prevState => {
+      return {
+        isFiltered: !prevState.isFiltered
+      };
+    });
+  };
+
   // handleChange(id) {                    // This method is not correct as it is mutating the state
   //   this.setState(prevState => {
   //     const updatedTodos = prevState.todos.map(item => {
@@ -123,7 +131,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="todo-list">
-        <Header />
+        <Header toggleFilter={this.toggleFilter} />
         {this.state.todoList.map(item => (
           <TodoItem
             key={item.id}
