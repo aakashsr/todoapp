@@ -28,10 +28,12 @@ body {
 }
 
 .header h3 {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 .todo-list {
+  background: url('wave.svg');
+  background-size: cover;
   background-color: white;
   margin: auto;
   width: 50%;
@@ -51,6 +53,7 @@ body {
     /* The third layer shadow */
     0 20px 1px -9px rgba(0, 0, 0, 0.15);
   padding: 30px;
+  padding-bottom: 280px;
 }
 
 .todo-item {
